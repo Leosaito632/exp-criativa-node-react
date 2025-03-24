@@ -1,0 +1,128 @@
+html {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: black;
+  color: white;
+}
+
+p,
+label {
+  font-size: 1rem;
+  align-self: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  background-color: rgb(37, 37, 37);
+}
+
+.div-externa {
+  width: 25vw;
+}
+
+.blur {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  background-color: rgb(37, 37, 37);
+  filter: blur(3px);
+}
+
+.blur-btn {
+  margin: 10px;
+  font-size: 1rem;
+  background-color: rgb(255, 255, 255);
+  border: solid 2px black;
+  padding: 3px;
+  filter: blur(3px);
+}
+
+.blur-titulo {
+  align-items: center;
+  filter: blur(3px);
+}
+
+.titulo {
+  align-items: center;
+}
+
+.users {
+  width: 80%;
+}
+
+.itens {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  background-color: gray;
+  padding: 7px;
+  border: solid black 1px;
+}
+
+.lista {
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 25% 75%;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  margin: 10px;
+  font-size: 1rem;
+  background-color: rgb(255, 255, 255);
+  border: solid 2px black;
+  padding: 3px;
+}
+
+.btn:hover {
+  background-color: rgb(168, 175, 241);
+  cursor: pointer;
+}
+
+.modal {
+  filter: blur(0px);
+  border: solid white 3px;
+  border-radius: 5px;
+  background-color: rgb(24, 24, 24);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  z-index: 100;
+}
+
+.grid-horizontal {
+  display: grid;
+  grid-template-columns: 10% 20% 50% 20%;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
