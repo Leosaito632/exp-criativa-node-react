@@ -4,7 +4,7 @@ import "./App.css";
 
 import RemoveButton from "./components/removeButton";
 import EditButton from "./components/editButton";
-
+  
 function App() {
   const [isModalTrue, setIsModalTrue] = useState(false);
   const [itemClicked, setItemClicked] = useState(null);
@@ -58,6 +58,7 @@ function App() {
             </div>
           </div>
         )}
+        
       </div>
       <DataList clicked={clicked} />
     </div>
