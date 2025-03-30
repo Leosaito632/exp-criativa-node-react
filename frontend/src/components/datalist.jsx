@@ -1,12 +1,17 @@
-import { useEffect, useState } from "react";
-import "../App.css";
+import DetalheButton from "./detalhesButton";
+import RemoveButton from "./removeButton";
+import EditButton from "./editButton";
 
-import CreateButton from "./createUserButton.jsx";
+import { useEffect, useState } from "react";
+
+import "../App.css";
 
 function DataList(props) {
   const [data, setData] = useState([]);
+  const [exibirCrud, setExibirCrud] = useState(false);
 
   useEffect(() => {
+    setExibirCrud(props.crud);
     const url = "http://localhost:8800/";
     fetch(url)
       .then((response) => response.json())
@@ -14,31 +19,27 @@ function DataList(props) {
   }, []);
 
   return (
-    <div>
-      <div className="header">
-        <h1 className="titulo" id="titulo">Listagem de Usuarios</h1>
-        <CreateButton></CreateButton>
-      </div>
+    <div className="main" id="main">
+      <div className="users" id="users">
+        <ul className="lista">
+          {data.map((user) => (
+            <li key={user.idusuarios} className="itens">
+              <div className="grid-horizontal">
+                <p>ID: {user.idusuarios}</p>
+                <p>{user.nome}</p>
+                <div></div>
 
-      <div className="main" id="main" >
-        <div className="users" id="users">
-          <ul className="lista">
-            {data.map((user) => (
-              <li key={user.idusuarios} className="itens">
-                <div className="grid-horizontal">
-                  <p>ID: {user.idusuarios}</p>
-                  <p>{user.nome}</p>
-                  <div></div>
-                  <div>
-                    <button id="detalhes-btn" onClick={() => props.clicked(user)} class="btn">
-                      Ver mais detalhes
-                    </button>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
+                {!exibirCrud && <DetalheButton user={user}></DetalheButton>}
+                {exibirCrud && (
+                  <>
+                    <RemoveButton></RemoveButton>
+                    <EditButton></EditButton>
+                  </>
+                )}
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
