@@ -1,14 +1,16 @@
 import DetalheButton from "./detalhesButton";
 import RemoveButton from "./removeButton";
 import EditButton from "./editButton";
+import UserContext from "./userContext";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
 import "../App.css";
 
 function DataList(props) {
   const [data, setData] = useState([]);
   const [exibirCrud, setExibirCrud] = useState(false);
+  const {user, setUser} = useContext(UserContext)
 
   useEffect(() => {
     setExibirCrud(props.crud);
