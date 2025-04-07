@@ -10,7 +10,7 @@ import "../App.css";
 function DataList(props) {
   const [data, setData] = useState([]);
   const [exibirCrud, setExibirCrud] = useState(false);
-  const {user, setUser} = useContext(UserContext)
+  const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
     setExibirCrud(props.crud);
@@ -21,7 +21,7 @@ function DataList(props) {
   }, []);
 
   return (
-    <div className="main" id="main">
+    <div clas sName="main" id="main">
       <div className="users" id="users">
         <ul className="lista">
           {data.map((user) => (
@@ -30,12 +30,11 @@ function DataList(props) {
                 <p>ID: {user.idusuarios}</p>
                 <p>{user.nome}</p>
                 <div></div>
-
                 {!exibirCrud && <DetalheButton user={user}></DetalheButton>}
                 {exibirCrud && (
                   <>
-                    <RemoveButton></RemoveButton>
-                    <EditButton></EditButton>
+                    <RemoveButton id={user.idusuarios}></RemoveButton>
+                    {/* <EditButton user={user}></EditButton> */}
                   </>
                 )}
               </div>

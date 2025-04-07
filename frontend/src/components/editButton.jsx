@@ -19,25 +19,8 @@ function EditButton(props) {
     window.location.reload();
   }
 
-  function alterarForm() {
-    // const section = document.getElementById("section");
-    // const paragraphs = section.querySelectorAll("p");
-
-    // for (const p of paragraphs) {
-    //   const id = p.id;
-    //   const input = document.createElement("input");
-    //   input.id = id;
-    //   input.type = "text";
-    //   input.value = p.textContent;
-    //   section.replaceChild(input, p);
-    // }
-    // const edit_btn = document.getElementById("edit_btn");
-    // edit_btn.innerHTML = "Ok";
-    // edit_btn.addEventListener("click", postRequest);
-  }
-
   return (
-    <button className="btn" id="edit_btn" onClick={alterarForm}>
+    <button className="btn" id="edit_btn" >
       Editar Usuário
     </button>
   );
