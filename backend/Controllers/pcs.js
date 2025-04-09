@@ -1,6 +1,6 @@
 import db from "../db.js";
 
-export const getUsers = (_, res) => {
+export const getPcs = (_, res) => {
   const q = "SELECT * FROM usuarios";
   db.query(q, (err, data) => {
     if (err) {
@@ -10,7 +10,7 @@ export const getUsers = (_, res) => {
   });
 };
 
-export const createUser = (req, res) => {
+export const createPc = (req, res) => {
   const { nome, idade, cpf } = req.body;
   if (strValida(nome) && strValida(idade) && strValida(cpf)) {
     const q = "INSERT INTO usuarios (nome, idade, cpf) VALUES (?,?,?)";
@@ -23,7 +23,7 @@ export const createUser = (req, res) => {
   }
 };
 
-export const removeUser = (req, res) => {
+export const removePc = (req, res) => {
   const id = req.body["id"];
   const q = "DELETE FROM usuarios WHERE (`idusuarios`=?)";
   db.query(q, id, (err, data) => {
@@ -41,7 +41,7 @@ function strValida(string) {
   return true;
 }
 
-export const editUser = (req, res) => {
+export const editPc = (req, res) => {
   const { id, nome, idade, cpf } = req.body;
   if (strValida(nome) && strValida(idade) && strValida(cpf)) {
     const q =

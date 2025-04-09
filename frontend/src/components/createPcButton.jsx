@@ -2,37 +2,37 @@ import "../App.css";
 import { useState } from "react";
 
 function CreateButton() {
-  const [isCreateUser, setIsCreateUser] = useState(false);
+  const [isCreatePc, setIsCreatePc] = useState(false);
 
   function toggleButtons() {
-    const div = document.getElementById("users");
+    const div = document.getElementById("pcs");
     const buttons = div.querySelectorAll("button");
     for (const b of buttons) {
       b.toggleAttribute("disabled");
     }
   }
 
-  function createUserClicked() {
+  function createPcClicked() {
     toggleButtons();
     var elem = document.getElementById("main");
     elem.setAttribute("class", "blur");
     document.getElementById("titulo").setAttribute("class", "blur-titulo");
-    document.getElementById("createUserBtn").setAttribute("class", "blur-btn");
-    setIsCreateUser(true);
+    document.getElementById("createPcBtn").setAttribute("class", "blur-btn");
+    setIsCreatePc(true);
   }
 
-  function closeCreateUser() {
+  function closeCreatePc() {
     toggleButtons();
     var elem = document.getElementById("main");
     elem.setAttribute("class", "main");
     document.getElementById("titulo").setAttribute("class", "titulo");
-    document.getElementById("createUserBtn").setAttribute("class", "btn");
-    setIsCreateUser(false);
+    document.getElementById("createPcBtn").setAttribute("class", "btn");
+    setIsCreatePc(false);
   }
 
-  function saveCreatedUser() {
+  function saveCreatedPc() {
     putRequest();
-    closeCreateUser();
+    closeCreatePc();
   }
 
   async function putRequest() {
@@ -44,7 +44,7 @@ function CreateButton() {
 						"idade": "${idade}",
 						"cpf": "${cpf}"}`;
 
-    await fetch("http://localhost:8800/criar_usuario", {
+    await fetch("http://localhost:8800/criar_computer", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -56,11 +56,11 @@ function CreateButton() {
 
   return (
     <div className="header">
-      <button onClick={createUserClicked} className="btn" id="createUserBtn">
+      <button onClick={createPcClicked} className="btn" id="createPcBtn">
         CRIAR USUARIO
       </button>
       <div className="div-externa">
-        {isCreateUser && (
+        {isCreatePc && (
           <div className="modal">
             <div className="modal-content">
               <h1>Criar Usuário</h1>
@@ -83,10 +83,10 @@ function CreateButton() {
                 </label>
                 <input className="input" type="text" name="cpf" id="cpf" />
               </form>
-              <button className="btn" onClick={saveCreatedUser}>
+              <button className="btn" onClick={saveCreatedPc}>
                 Enviar
               </button>
-              <button className="btn" onClick={closeCreateUser}>
+              <button className="btn" onClick={closeCreatePc}>
                 Fechar
               </button>
             </div>

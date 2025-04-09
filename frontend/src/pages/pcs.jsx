@@ -1,8 +1,8 @@
 import "../App.css";
 import DataList from "../components/datalist";
 
-function Users() {
+function Pcs() {
   return <DataList crud={false}></DataList>;
 }
 
-export default Users;
+export default Pcs;

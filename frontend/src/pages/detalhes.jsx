@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import UserContext from "../components/userContext";
+import PcContext from "../components/pcContext";
 
 function Detalhes() {
-  const {user, setUser} = useContext(UserContext)
+  const {pc, setPc} = useContext(PcContext)
 
   return (
     <div className="div-externa">
@@ -13,15 +13,15 @@ function Detalhes() {
             <label>
               <strong>Nome:</strong>
             </label>
-            <p id="name-text">{user.nome}</p>
+            <p id="name-text">{pc.nome}</p>
             <label>
               <strong>Idade:</strong>
             </label>
-            <p id="idade-text"> {user.idade}</p>
+            <p id="idade-text"> {pc.idade}</p>
             <label>
               <strong>CPF:</strong>
             </label>
-            <p id="cpf-text">{user.cpf}</p>
+            <p id="cpf-text">{pc.cpf}</p>
           </div>
         </div>
       </div>

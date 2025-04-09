@@ -3,7 +3,7 @@ import "../App.css";
 function RemoveButton(props) {
   async function deleteRequest() {
     const jsonData =`{"id": "${props.id}"}`;
-    await fetch("http://localhost:8800/remover_usuario", {
+    await fetch("http://localhost:8800/remover_computer", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -14,7 +14,7 @@ function RemoveButton(props) {
     }
 
   return (
-    <button className="btn" onClick={deleteRequest}>
+    <button id="remove_btn" className="btn" onClick={deleteRequest}>
       Remover Usuário
     </button>
   );

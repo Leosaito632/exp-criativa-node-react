@@ -1,7 +1,7 @@
 import DetalheButton from "./detalhesButton";
 import RemoveButton from "./removeButton";
 import EditButton from "./editButton";
-import UserContext from "./userContext";
+import PcContext from "./pcContext";
 
 import { useEffect, useState, useContext } from "react";
 
@@ -10,7 +10,7 @@ import "../App.css";
 function DataList(props) {
   const [data, setData] = useState([]);
   const [exibirCrud, setExibirCrud] = useState(false);
-  const { user, setUser } = useContext(UserContext);
+  const { pc, setPc } = useContext(PcContext);
 
   useEffect(() => {
     setExibirCrud(props.crud);
@@ -22,19 +22,19 @@ function DataList(props) {
 
   return (
     <div clas sName="main" id="main">
-      <div className="users" id="users">
+      <div className="pcs" id="pcs">
         <ul className="lista">
-          {data.map((user) => (
-            <li key={user.idusuarios} className="itens">
+          {data.map((pc) => (
+            <li key={pc.idusuarios} className="itens">
               <div className="grid-horizontal">
-                <p>ID: {user.idusuarios}</p>
-                <p>{user.nome}</p>
+                <p>ID: {pc.idusuarios}</p>
+                <p>{pc.nome}</p>
                 <div></div>
-                {!exibirCrud && <DetalheButton user={user}></DetalheButton>}
+                {!exibirCrud && <DetalheButton pc={pc}></DetalheButton>}
                 {exibirCrud && (
                   <>
-                    <RemoveButton id={user.idusuarios}></RemoveButton>
-                    {/* <EditButton user={user}></EditButton> */}
+                    <RemoveButton  id={pc.idusuarios}></RemoveButton>
+                    <EditButton pc={pc}></EditButton>
                   </>
                 )}
               </div>

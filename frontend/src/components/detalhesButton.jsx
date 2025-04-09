@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 
-import UserContext from "./userContext";
+import PcContext from "./pcContext";
 
 function DetalheButton(props) {
-  const {user, setUser} = useContext(UserContext)
+  const {pc, setPc} = useContext(PcContext)
 
   return (
-    <Link to={"/detalhes"} class="btn" id="detalhe_button" onClick={()=> setUser(props.user)}>
+    <Link to={"/detalhes"} class="btn" id="detalhe_button" onClick={()=> setPc(props.pc)}>
       Ver mais detalhes
     </Link>
   );
