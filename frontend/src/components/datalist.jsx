@@ -2,6 +2,7 @@ import DetalheButton from "./detalhesButton";
 import RemoveButton from "./removeButton";
 import EditButton from "./editButton";
 import PcContext from "./pcContext";
+import CreateButton from "./createPcButton"
 
 import { useEffect, useState, useContext } from "react";
 
@@ -23,17 +24,20 @@ function DataList(props) {
   return (
     <div clas sName="main" id="main">
       <div className="pcs" id="pcs">
+        {exibirCrud && (
+          <CreateButton></CreateButton>
+        )}
         <ul className="lista">
           {data.map((pc) => (
-            <li key={pc.idusuarios} className="itens">
+            <li key={pc.id} className="itens">
               <div className="grid-horizontal">
-                <p>ID: {pc.idusuarios}</p>
-                <p>{pc.nome}</p>
+                <p>ID: {pc.id}</p>
+                <p>{pc.cpu}</p>
                 <div></div>
                 {!exibirCrud && <DetalheButton pc={pc}></DetalheButton>}
                 {exibirCrud && (
                   <>
-                    <RemoveButton  id={pc.idusuarios}></RemoveButton>
+                    <RemoveButton id={pc.id}></RemoveButton>
                     <EditButton pc={pc}></EditButton>
                   </>
                 )}

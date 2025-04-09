@@ -15,7 +15,7 @@ function RemoveButton(props) {
 
   return (
     <button id="remove_btn" className="btn" onClick={deleteRequest}>
-      Remover Usuário
+      Remover Computador
     </button>
   );
 }

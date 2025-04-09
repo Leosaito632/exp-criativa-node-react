@@ -2,47 +2,37 @@ import "../App.css";
 import { useState } from "react";
 
 function CreateButton() {
-  const [isCreatePc, setIsCreatePc] = useState(false);
+  const [isModalTrue, setIsModalTrue] = useState(false);
 
-  function toggleButtons() {
-    const div = document.getElementById("pcs");
-    const buttons = div.querySelectorAll("button");
-    for (const b of buttons) {
-      b.toggleAttribute("disabled");
-    }
+  function clicked() {
+    setIsModalTrue(true);
+    document.getElementById("edit_btn").toggleAttribute("disabled");
+    document.getElementById("remove_btn").toggleAttribute("disabled");
   }
 
-  function createPcClicked() {
-    toggleButtons();
-    var elem = document.getElementById("main");
-    elem.setAttribute("class", "blur");
-    document.getElementById("titulo").setAttribute("class", "blur-titulo");
-    document.getElementById("createPcBtn").setAttribute("class", "blur-btn");
-    setIsCreatePc(true);
-  }
-
-  function closeCreatePc() {
-    toggleButtons();
-    var elem = document.getElementById("main");
-    elem.setAttribute("class", "main");
-    document.getElementById("titulo").setAttribute("class", "titulo");
-    document.getElementById("createPcBtn").setAttribute("class", "btn");
-    setIsCreatePc(false);
+  function closeModal() {
+    setIsModalTrue(false);
+    document.getElementById("edit_btn").toggleAttribute("disabled");
+    document.getElementById("remove_btn").toggleAttribute("disabled");
   }
 
   function saveCreatedPc() {
     putRequest();
-    closeCreatePc();
+    closeModal();
   }
 
   async function putRequest() {
-    let nome = document.getElementById("nome").value;
-    let idade = document.getElementById("idade").value;
-    let cpf = document.getElementById("cpf").value;
+    const cpu = document.getElementById("cpu-text").value;
+    const gpu = document.getElementById("gpu-text").value;
+    const memory = document.getElementById("memory-text").value;
+    const storage = document.getElementById("storage-text").value;
+    const psu = document.getElementById("psu-text").value;
 
-    const jsonData = `{"nome": "${nome}",
-						"idade": "${idade}",
-						"cpf": "${cpf}"}`;
+    const jsonData = `{"cpu": "${cpu}",
+                      "gpu": "${gpu}",
+                      "memory": "${memory}",
+                      "storage": "${storage}",
+                      "psu": "${psu}"}`;
 
     await fetch("http://localhost:8800/criar_computer", {
       method: "PUT",
@@ -56,38 +46,37 @@ function CreateButton() {
 
   return (
     <div className="header">
-      <button onClick={createPcClicked} className="btn" id="createPcBtn">
-        CRIAR USUARIO
+      <button onClick={() => clicked()} className="btn" id="create_btn">
+        Criar Computador
       </button>
       <div className="div-externa">
-        {isCreatePc && (
+        {isModalTrue && (
           <div className="modal">
             <div className="modal-content">
-              <h1>Criar Usuário</h1>
-              <form id="form" className="grid">
+              <div className="grid" id="section">
                 <label>
-                  <strong>Nome:</strong>
+                  <strong>Processador:</strong>
                 </label>
-                <input className="input" type="text" name="nome" id="nome" />
+                <input id="cpu-text"></input>
                 <label>
-                  <strong>Idade:</strong>
+                  <strong>Placa de vídeo:</strong>
                 </label>
-                <input
-                  className="input"
-                  type="number"
-                  name="idade"
-                  id="idade"
-                />
+                <input id="gpu-text"></input>
                 <label>
-                  <strong>CPF:</strong>
+                  <strong>Memória RAM:</strong>
                 </label>
-                <input className="input" type="text" name="cpf" id="cpf" />
-              </form>
-              <button className="btn" onClick={saveCreatedPc}>
+                <input id="memory-text"></input>
+                <label>
+                  <strong>Armazenamento:</strong>
+                </label>
+                <input id="storage-text"></input>
+                <label>
+                  <strong>Fonte:</strong>
+                </label>
+                <input id="psu-text"></input>
+              </div>
+              <button className="btn" onClick={() => saveCreatedPc()}>
                 Enviar
-              </button>
-              <button className="btn" onClick={closeCreatePc}>
-                Fechar
               </button>
             </div>
           </div>

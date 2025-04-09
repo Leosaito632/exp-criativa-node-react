@@ -10,16 +10,16 @@ function Header() {
   useEffect(() => {
     switch (window.location.pathname) {
       case "/crud":
-        setTitulo("Gerenciar Usuários");
+        setTitulo("Gerenciar Computadores");
         break;
       case "/":
-        setTitulo("Listar Usuários");
+        setTitulo("Listar Computadores");
         break;
       case "/detalhes":
         setTitulo("Mais Detalhes")
         break;
       default:
-        setTitulo("Listar Usuários");
+        setTitulo("Listar Computadores");
     }
   }, [location.pathname]);
 
@@ -29,10 +29,10 @@ function Header() {
         {titulo}
       </h1>
       <Link className="btn" to="/">
-        Listar Usuários
+        Listar Computadores
       </Link>
       <Link className="btn" to="/crud">
-        Gerenciar Usuários
+        Gerenciar Computadores
       </Link>
     </div>
   );

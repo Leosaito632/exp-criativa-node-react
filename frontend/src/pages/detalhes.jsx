@@ -8,20 +8,28 @@ function Detalhes() {
     <div className="div-externa">
       <div className="center-div">
         <div className="modal-content">
-          <h1>Detalhes do Usuário</h1>
+          <h1>Detalhes do Computador</h1>
           <div className="grid" id="section">
             <label>
-              <strong>Nome:</strong>
+              <strong>Processador:</strong>
             </label>
-            <p id="name-text">{pc.nome}</p>
+            <p>{pc.cpu}</p>
             <label>
-              <strong>Idade:</strong>
+              <strong>Placa de vídeo:</strong>
             </label>
-            <p id="idade-text"> {pc.idade}</p>
+            <p> {pc.gpu}</p>
             <label>
-              <strong>CPF:</strong>
+              <strong>Memória RAM:</strong>
             </label>
-            <p id="cpf-text">{pc.cpf}</p>
+            <p>{pc.memory}</p>
+            <label>
+              <strong>Armazenamento:</strong>
+            </label>
+            <p>{pc.storage}</p>
+            <label>
+              <strong>Fonte:</strong>
+            </label>
+            <p>{pc.psu}</p>
           </div>
         </div>
       </div>

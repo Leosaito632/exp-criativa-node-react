@@ -10,6 +10,8 @@ function EditButton(props) {
     setIsModalTrue(true);
     document.getElementById("edit_btn").toggleAttribute("disabled");
     document.getElementById("remove_btn").toggleAttribute("disabled");
+    document.getElementById("create_btn").toggleAttribute("disabled");
+
   }
 
   function closeModal() {
@@ -17,16 +19,22 @@ function EditButton(props) {
     setItemClicked(null);
     document.getElementById("edit_btn").toggleAttribute("disabled");
     document.getElementById("remove_btn").toggleAttribute("disabled");
+    document.getElementById("create_btn").toggleAttribute("disabled");
   }
 
   async function postRequest() {
-    const nome = document.getElementById("name-text").value;
-    const idade = document.getElementById("idade-text").value;
-    const cpf = document.getElementById("cpf-text").value;
-    const jsonData = `{"id": "${props.pc.idusuarios}",
-                      "nome": "${nome}",
-                      "idade": "${idade}",
-                      "cpf": "${cpf}"}`;
+    const cpu = document.getElementById("cpu-text").value;
+    const gpu = document.getElementById("gpu-text").value;
+    const memory = document.getElementById("memory-text").value;
+    const storage = document.getElementById("storage-text").value;
+    const psu = document.getElementById("psu-text").value;
+
+    const jsonData = `{"id": "${props.pc.id}",
+                      "cpu": "${cpu}",
+                      "gpu": "${gpu}",
+                      "memory": "${memory}",
+                      "storage": "${storage}",
+                      "psu": "${psu}"}`;
     await fetch("http://localhost:8800/editar_computer/", {
       method: "POST",
       headers: {
@@ -45,17 +53,25 @@ function EditButton(props) {
           <div className="modal-content">
             <div className="grid" id="section">
               <label>
-                <strong>Nome:</strong>
+                <strong>Processador:</strong>
               </label>
-              <input defaultValue={props.pc.nome} id="name-text"></input>
+              <input defaultValue={props.pc.cpu} id="cpu-text"></input>
               <label>
-                <strong>Idade:</strong>
+                <strong>Placa de vídeo:</strong>
               </label>
-              <input defaultValue={props.pc.idade} id="idade-text"></input>
+              <input defaultValue={props.pc.gpu} id="gpu-text"></input>
               <label>
-                <strong>CPF:</strong>
+                <strong>Memória RAM:</strong>
               </label>
-              <input defaultValue={props.pc.cpf} id="cpf-text"></input>
+              <input defaultValue={props.pc.memory} id="memory-text"></input>
+              <label>
+                <strong>Armazenamento:</strong>
+              </label>
+              <input defaultValue={props.pc.storage} id="storage-text"></input>
+              <label>
+                <strong>Fonte:</strong>
+              </label>
+              <input defaultValue={props.pc.psu} id="psu-text"></input>
             </div>
             <button className="btn" onClick={() => postRequest()}>
               Enviar
@@ -64,7 +80,7 @@ function EditButton(props) {
         </div>
       )}
       <button className="btn" id="edit_btn" onClick={() => clicked(props.pc)}>
-        Editar Usuário
+        Editar Computador
       </button>
     </>
   );

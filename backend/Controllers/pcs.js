@@ -1,7 +1,7 @@
 import db from "../db.js";
 
 export const getPcs = (_, res) => {
-  const q = "SELECT * FROM usuarios";
+  const q = "SELECT * FROM crud.computer";
   db.query(q, (err, data) => {
     if (err) {
       return res.json(err);
@@ -11,10 +11,17 @@ export const getPcs = (_, res) => {
 };
 
 export const createPc = (req, res) => {
-  const { nome, idade, cpf } = req.body;
-  if (strValida(nome) && strValida(idade) && strValida(cpf)) {
-    const q = "INSERT INTO usuarios (nome, idade, cpf) VALUES (?,?,?)";
-    db.query(q, [nome, idade, cpf], (err, data) => {
+  const { cpu, gpu, memory, storage, psu } = req.body;
+  if (
+    strValida(cpu) &&
+    strValida(gpu) &&
+    strValida(memory) &&
+    strValida(storage) &&
+    strValida(psu)
+  ) {
+    const q =
+      "INSERT INTO crud.computer (cpu, gpu, memory, storage, psu) VALUES (?,?,?,?,?)";
+    db.query(q, [cpu, gpu, memory, storage, psu], (err, data) => {
       if (err) {
         return res.json(err);
       }
@@ -25,7 +32,7 @@ export const createPc = (req, res) => {
 
 export const removePc = (req, res) => {
   const id = req.body["id"];
-  const q = "DELETE FROM usuarios WHERE (`idusuarios`=?)";
+  const q = "DELETE FROM crud.computer WHERE (`id`=?)";
   db.query(q, id, (err, data) => {
     if (err) {
       return res.json(err);
@@ -42,11 +49,17 @@ function strValida(string) {
 }
 
 export const editPc = (req, res) => {
-  const { id, nome, idade, cpf } = req.body;
-  if (strValida(nome) && strValida(idade) && strValida(cpf)) {
+  const {id, cpu, gpu, memory, storage, psu } = req.body;
+  if (
+    strValida(cpu) &&
+    strValida(gpu) &&
+    strValida(memory) &&
+    strValida(storage) &&
+    strValida(psu)
+  ) {
     const q =
-      "UPDATE crud.usuarios SET nome = ?, idade = ?, cpf = ? WHERE idusuarios = ?;";
-    db.query(q, [nome, idade, cpf, id], (err, data) => {
+      "UPDATE crud.computer SET cpu = ?, gpu = ?, memory = ?, storage = ?, psu = ? WHERE id = ?;";
+    db.query(q, [cpu, gpu, memory, storage, psu, id], (err, data) => {
       if (err) {
         return res.json(err);
       }
