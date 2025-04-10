@@ -1,13 +1,61 @@
-1. Realizar um git clone do repositório ou baixar o arquivo zip
+## Como executar o projeto
 
-   Caso baixe o arquivo zip, será necessário descompactar
-   
-3. Executar a query do arquivo create_computer_table.sql no seu servidor MySQL.
-4. Abrir o projeto na sua IDE ou editor de escolha
-5. Abrir 2 terminais no projeto
+### 1. Clone o repositório ou baixe o arquivo ZIP
 
-    Em um deles entrar no backend e no outro entrar no frontend, com os comandos "cd backend" e "cd frontend" respectivamente
-   
-7. Executar o comando "npm install" nos dois terminais
-8. Aguardar a instalação das dependencias
-9. Executar o comando "npm start" nos dois terminais
+```bash
+git clone https://github.com/seu-usuario/seu-repositorio.git
+```
+
+Caso opte por baixar o ZIP, descompacte o arquivo em uma pasta de sua preferência.
+
+---
+
+### 2. Configure o banco de dados MySQL
+
+- Execute a query presente no arquivo `create_computer_table.sql` em seu servidor MySQL para criar a tabela necessária.
+
+---
+
+### 3. Abra o projeto em sua IDE ou editor de código (opcional)
+
+Recomendo o uso do [Visual Studio Code](https://code.visualstudio.com/), mas qualquer editor funcionará.
+
+---
+
+### 4. Acesse os diretórios do frontend e backend
+
+Abra dois terminais *no projeto* e execute:
+
+```bash
+# Terminal 1 - Backend
+cd backend
+
+# Terminal 2 - Frontend
+cd frontend
+```
+
+---
+
+### 5. Instale as dependências
+
+Em **cada terminal**, execute:
+
+```bash
+npm install
+```
+
+Aguarde a instalação de todas as dependências.
+
+---
+
+### 6. Inicie os servidores
+
+Ainda em **cada terminal**, execute:
+
+```bash
+npm start
+```
+
+- O backend será iniciado em uma porta
+- O frontend será iniciado em outra
+---
