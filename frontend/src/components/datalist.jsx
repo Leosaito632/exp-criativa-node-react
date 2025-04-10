@@ -1,17 +1,15 @@
 import DetalheButton from "./detalhesButton";
 import RemoveButton from "./removeButton";
 import EditButton from "./editButton";
-import PcContext from "./pcContext";
 import CreateButton from "./createPcButton"
 
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 
 import "../App.css";
 
 function DataList(props) {
   const [data, setData] = useState([]);
   const [exibirCrud, setExibirCrud] = useState(false);
-  const { pc, setPc } = useContext(PcContext);
 
   useEffect(() => {
     setExibirCrud(props.crud);
@@ -19,10 +17,10 @@ function DataList(props) {
     fetch(url)
       .then((response) => response.json())
       .then((data) => setData(data));
-  }, []);
+  },[props.crud]);
 
   return (
-    <div clas sName="main" id="main">
+    <div className="main" id="main">
       <div className="pcs" id="pcs">
         {exibirCrud && (
           <CreateButton></CreateButton>

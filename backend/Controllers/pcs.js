@@ -27,6 +27,8 @@ export const createPc = (req, res) => {
       }
       return res.status(200).json(data);
     });
+  } else {
+    return res.status(400);
   }
 };
 
@@ -49,7 +51,7 @@ function strValida(string) {
 }
 
 export const editPc = (req, res) => {
-  const {id, cpu, gpu, memory, storage, psu } = req.body;
+  const { id, cpu, gpu, memory, storage, psu } = req.body;
   if (
     strValida(cpu) &&
     strValida(gpu) &&
@@ -65,5 +67,7 @@ export const editPc = (req, res) => {
       }
       return res.status(200).json(data);
     });
+  } else {
+    return res.status(400);
   }
 };
