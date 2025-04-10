@@ -3,7 +3,7 @@
 ### 1. Clone o repositório ou baixe o arquivo ZIP
 
 ```bash
-git clone https://github.com/seu-usuario/seu-repositorio.git
+git clone https://github.com/Leosaito632/exp-criativa-node-react.git
 ```
 
 Caso opte por baixar o ZIP, descompacte o arquivo em uma pasta de sua preferência.
