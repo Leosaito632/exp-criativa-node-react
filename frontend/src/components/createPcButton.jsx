@@ -88,6 +88,9 @@ function CreateButton() {
               <button className="btn" onClick={() => putRequest()}>
                 Enviar
               </button>
+              <button className="btn" onClick={() => closeModal()}>
+              Cancelar
+            </button>
             </div>
           </div>
         )}

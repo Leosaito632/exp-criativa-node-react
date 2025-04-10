@@ -3,10 +3,8 @@ import { useState } from "react";
 
 function EditButton(props) {
   const [isModalTrue, setIsModalTrue] = useState(false);
-  const [itemClicked, setItemClicked] = useState(null);
 
-  function clicked(pc) {
-    setItemClicked(pc);
+  function clicked() {
     setIsModalTrue(true);
     document.getElementById("edit_btn").toggleAttribute("disabled");
     document.getElementById("remove_btn").toggleAttribute("disabled");
@@ -15,7 +13,6 @@ function EditButton(props) {
 
   function closeModal() {
     setIsModalTrue(false);
-    setItemClicked(null);
     document.getElementById("edit_btn").toggleAttribute("disabled");
     document.getElementById("remove_btn").toggleAttribute("disabled");
     document.getElementById("create_btn").toggleAttribute("disabled");
@@ -60,7 +57,7 @@ function EditButton(props) {
 
   return (
     <>
-      {isModalTrue && itemClicked && (
+      {isModalTrue && (
         <div className="modal">
           <div className="modal-content">
             <div className="grid" id="section">
@@ -88,10 +85,13 @@ function EditButton(props) {
             <button className="btn" onClick={() => postRequest()}>
               Enviar
             </button>
+            <button className="btn" onClick={() => closeModal()}>
+              Cancelar
+            </button>
           </div>
         </div>
       )}
-      <button className="btn" id="edit_btn" onClick={() => clicked(props.pc)}>
+      <button className="btn" id="edit_btn" onClick={() => clicked()}>
         Editar Computador
       </button>
     </>
