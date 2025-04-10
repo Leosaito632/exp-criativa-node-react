@@ -16,10 +16,15 @@ function CreateButton() {
     document.getElementById("remove_btn").toggleAttribute("disabled");
   }
 
-  function saveCreatedPc() {
-    putRequest();
-    closeModal();
+  function strValida(strings) {
+    for (let i = 0; i < strings.length; i++) {
+      if (strings[i].trim() == null || strings[i].trim() === "") {
+        return false;
+      }
+    }
+    return true;
   }
+
 
   async function putRequest() {
     const cpu = document.getElementById("cpu-text").value;
@@ -27,6 +32,10 @@ function CreateButton() {
     const memory = document.getElementById("memory-text").value;
     const storage = document.getElementById("storage-text").value;
     const psu = document.getElementById("psu-text").value;
+
+    if(!strValida([cpu, gpu, memory, storage, psu])) {
+      alert("Campos Vazios não são permitidos!")
+    }
 
     const jsonData = `{"cpu": "${cpu}",
                       "gpu": "${gpu}",
@@ -41,6 +50,7 @@ function CreateButton() {
       },
       body: jsonData,
     });
+    closeModal();
     window.location.reload();
   }
 
@@ -75,7 +85,7 @@ function CreateButton() {
                 </label>
                 <input id="psu-text"></input>
               </div>
-              <button className="btn" onClick={() => saveCreatedPc()}>
+              <button className="btn" onClick={() => putRequest()}>
                 Enviar
               </button>
             </div>

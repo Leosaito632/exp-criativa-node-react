@@ -11,7 +11,6 @@ function EditButton(props) {
     document.getElementById("edit_btn").toggleAttribute("disabled");
     document.getElementById("remove_btn").toggleAttribute("disabled");
     document.getElementById("create_btn").toggleAttribute("disabled");
-
   }
 
   function closeModal() {
@@ -22,12 +21,25 @@ function EditButton(props) {
     document.getElementById("create_btn").toggleAttribute("disabled");
   }
 
+  function strValida(strings) {
+    for (let i = 0; i < strings.length; i++) {
+      if (strings[i].trim() == null || strings[i].trim() === "") {
+        return false;
+      }
+    }
+    return true;
+  }
+
   async function postRequest() {
     const cpu = document.getElementById("cpu-text").value;
     const gpu = document.getElementById("gpu-text").value;
     const memory = document.getElementById("memory-text").value;
     const storage = document.getElementById("storage-text").value;
     const psu = document.getElementById("psu-text").value;
+    
+    if(!strValida([cpu, gpu, memory, storage, psu])) {
+      alert("Campos Vazios não são permitidos!")
+    }
 
     const jsonData = `{"id": "${props.pc.id}",
                       "cpu": "${cpu}",
